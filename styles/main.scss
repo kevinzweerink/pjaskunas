@@ -1,0 +1,175 @@
+/* Will be compiled down to a single stylesheet with your sass files */
+@import "compass/css3";
+
+$serif: "minion-pro", georgia, serif;
+$sans: "franklin-gothic-urw", sans-serif;
+
+$black: #262626;
+$white: #fff;
+$blue: #0F45F2;
+$yellow: #F4DE3D;
+
+%serif-family {
+	font-family: $serif;
+	font-weight: 800;
+	color: $black;
+}
+
+%sans-family {
+	font-family: $sans;
+	font-weight: 400;
+	color: $black;
+}
+
+body {
+	margin: 0;
+	font-size: 16px;
+	width: 100%;
+}
+
+h1, h2, h3 {
+	@extend %serif-family;
+
+	&.section-header {
+		padding-bottom: .55em;
+		border-bottom: 1px solid $black;
+	}
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2, h3 {
+	font-size: 1.5em;
+}
+
+a {
+	@extend %serif-family;
+	color: $blue;
+}
+
+p {
+	line-height: 1.25em;
+}
+
+img.round {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	margin-top: 2em;
+}
+
+.main {
+	border: 14px solid $black;
+	overflow: hidden;
+	position: relative;
+}
+
+.content {
+	@extend %sans-family;
+
+	width: 80%;
+	margin: 3em auto;
+	overflow: hidden;
+}
+
+.about {
+	width: 40%;
+	float: left;
+}
+
+.works {
+	width: 45%;
+	float: right;
+	margin-top: 6em;
+}
+
+.work-snippet:not(:last-of-type) {
+	padding-bottom: 2em; 
+	border-bottom: 1px solid $black;
+}
+
+//SIDEBAR STYLES
+
+.sidebar {
+	@include box-sizing(border-box);
+	@include transition(right .5s ease, padding .25s ease);
+
+	@extend %sans-family;
+
+	position: absolute;
+	top: 0px;
+	right: -50%;
+	padding: 3em 7em;
+	overflow: scroll;
+	width: 50%;
+
+	&.active {
+		@include transition(right .25s ease);
+		width: 50%;
+		right: 0%;
+		background-color: $yellow;
+		z-index: 200;
+		padding: 3em 7em;
+	}
+
+	h1 {
+		font-size: 1.8em;
+	}
+
+	img {
+		float: left;
+		padding: 0 2em 1em 0;
+	}
+
+	.closebar {
+		color: $black;
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		border: 2px solid $black;
+		text-align: center;
+		text-decoration: none;
+		vertical-align: middle;
+		position: absolute;
+		top: 1em;
+		left: 1em;
+
+		.inner {
+			display: block;
+			margin-top: -5px;
+		}
+	}
+
+	dl {
+		dd {
+			margin: 0 0 1em 0;
+			text-indent: -5px;
+		}
+
+		dt {
+			font-weight: 800;
+			margin: 0 0 1.5em 0;
+			&:before {
+				content: "—";
+			}
+		}
+	}
+}
+
+footer {
+	@extend %sans-family;
+	background: $black;
+	color: $white;
+	padding: 2em 10%;
+
+	a {
+		@extend %sans-family;
+		color: $white;
+		text-decoration: none;
+		display: block;
+		padding-bottom: .5em;
+	}
+}
